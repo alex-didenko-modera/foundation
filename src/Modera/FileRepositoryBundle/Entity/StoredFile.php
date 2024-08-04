@@ -202,6 +202,11 @@ class StoredFile
         $this->container = $container;
     }
 
+    public function terminate(): void
+    {
+        $this->container = null;
+    }
+
     public function getUrl(int $type = RouterInterface::NETWORK_PATH): string
     {
         $urlGenerator = null;

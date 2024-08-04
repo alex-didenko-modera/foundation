@@ -75,7 +75,7 @@ class Repository
      */
     private bool $internal = false;
 
-    private ContainerInterface $container;
+    private ?ContainerInterface $container = null;
 
     /**
      * @param array<mixed> $config
@@ -159,6 +159,14 @@ class Repository
     public function init(ContainerInterface $container): void
     {
         $this->container = $container;
+    }
+
+    /**
+     * @private
+     */
+    public function terminate(): void
+    {
+        $this->container = null;
     }
 
     /**
